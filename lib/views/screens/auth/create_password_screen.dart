@@ -17,7 +17,7 @@ class CreatePasswordScreen extends StatelessWidget {
           'Create Password',
         ),
         leading: IconButton(
-            onPressed: () => Get.back,
+            onPressed: () => Get.back(),
             icon: const Icon(Icons.arrow_back_ios_new_rounded)),
       ),
       body: Center(

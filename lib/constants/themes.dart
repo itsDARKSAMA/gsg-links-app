@@ -67,6 +67,12 @@ class AppThemes {
         borderRadius: BorderRadius.circular(16),
       ),
     ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: AppColors.primaryColor,
+      foregroundColor: AppColors.whiteColor,
+      elevation: 0,
+      shape: CircleBorder(),
+    ),
     appBarTheme: AppBarTheme(
       elevation: 0,
       centerTitle: true,

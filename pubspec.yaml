@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   smooth_corner: ^1.1.0
   get: ^4.6.5
+  vibration: ^1.8.1
 
 dev_dependencies:
   flutter_test:
