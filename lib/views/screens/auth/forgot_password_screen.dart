@@ -1,95 +1,62 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
+import 'package:mylinks/controllers/auth/forgot_password_controller.dart';
+import 'package:mylinks/views/widgets/primary_button.dart';
 
-class ForgotPasswordScreen extends StatefulWidget {
+class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
-
-  @override
-  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
-}
-
-class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
-  late TextEditingController _emailTextController;
-
-  @override
-  void initState() {
-    super.initState();
-    _emailTextController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _emailTextController.dispose();
-    super.dispose();
-  }
+  static const route = '/forgot-password';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('MyLinks'),
-        centerTitle: true,
-      ),
-      body: ListView(
-        padding: const EdgeInsets.symmetric(
-          vertical: 200,
-          horizontal: 30,
+        title: const Text('Forgot Password'),
+        leading: IconButton(
+          onPressed: () => Get.back,
+          icon: const Icon(Icons.arrow_back_ios_new_rounded),
         ),
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          const Text(
-            'Forgot Your Password?',
-            style: TextStyle(
-              fontSize: 27,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Text(
-            'no worries, you just need to type your email address or username and we will send the verification code.',
-            style: Fonts.m16.copyWith(
-              color: AppColors.greyColor,
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          TextField(
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              label: const Text('Email Address'),
-              prefixIcon: const Icon(Icons.email_outlined),
-              constraints: const BoxConstraints(
-                maxHeight: 50,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              minimumSize: const Size(0, 60),
-              backgroundColor: AppColors.secondaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-            child: Text(
-              'Reset My Password',
-              style: Fonts.b20.copyWith(
-                color: AppColors.whiteColor,
-              ),
-            ),
-          ),
-        ],
+      ),
+      body: Center(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.9,
+          child: GetBuilder<ForgotPasswordController>(
+              init: Get.put(ForgotPasswordController()),
+              builder: (controller) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text('Create Password', style: Fonts.sb24),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      'no worries, you just need to type your email address or username and we will send the verification code.',
+                      style: Fonts.r15.copyWith(
+                        color: AppColors.greyColor,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TextFormField(
+                      controller: controller.emailTextController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        label: Text('Email Address'),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    PrimaryButton(text: "Reset Password", onPressed: () {}),
+                  ],
+                );
+              }),
+        ),
       ),
     );
   }
