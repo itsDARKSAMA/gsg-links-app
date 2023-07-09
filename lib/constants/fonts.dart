@@ -14,7 +14,13 @@ class Fonts {
     fontSize: 20,
     fontWeight: FontWeight.w700,
   );
-  static const TextStyle b17 = TextStyle(
+
+  static const TextStyle b24 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+  );
+  
+    static const TextStyle b17 = TextStyle(
     fontSize: 17,
     fontWeight: FontWeight.w700,
   );
@@ -33,6 +39,10 @@ class Fonts {
     fontWeight: FontWeight.w600,
   );
   static const TextStyle sb15 = TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.w600,
+  );
+  static const TextStyle sb16 = TextStyle(
     fontSize: 15,
     fontWeight: FontWeight.w600,
   );
@@ -82,6 +92,14 @@ class Fonts {
   );
   static const TextStyle r12 = TextStyle(
     fontSize: 12,
+    fontWeight: FontWeight.w400,
+  );
+  static const TextStyle r14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  );
+  static const TextStyle r16 = TextStyle(
+    fontSize: 16,
     fontWeight: FontWeight.w400,
   );
   static const TextStyle r10 = TextStyle(
