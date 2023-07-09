@@ -6,12 +6,22 @@ class Fonts {
     fontSize: 32,
     fontWeight: FontWeight.w700,
   );
+  static const TextStyle b24 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+  );
   static const TextStyle b20 = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w700,
   );
+
   static const TextStyle b24 = TextStyle(
     fontSize: 24,
+    fontWeight: FontWeight.w700,
+  );
+  
+    static const TextStyle b17 = TextStyle(
+    fontSize: 17,
     fontWeight: FontWeight.w700,
   );
   static const TextStyle b16 = TextStyle(
@@ -20,6 +30,10 @@ class Fonts {
   );
 
   //semi bold fonts
+  static const TextStyle sb24 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
+  );
   static const TextStyle sb20 = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w600,
@@ -70,6 +84,10 @@ class Fonts {
   );
   static const TextStyle r20 = TextStyle(
     fontSize: 20,
+    fontWeight: FontWeight.w400,
+  );
+  static const TextStyle r15 = TextStyle(
+    fontSize: 15,
     fontWeight: FontWeight.w400,
   );
   static const TextStyle r12 = TextStyle(

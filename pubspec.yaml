@@ -38,6 +38,12 @@ dependencies:
   qr_flutter: ^4.1.0
   flutter_svg: ^2.0.7
 
+  flutter_svg: ^2.0.7
+
+  smooth_corner: ^1.1.0
+  get: ^4.6.5
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -61,9 +67,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/images/
-    - assets/icons/
+  # assets:
+  #   - assets/images/
+  #   - assets/icons/
 
   fonts:
     - family: Montserrat

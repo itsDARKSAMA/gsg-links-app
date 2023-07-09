@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mylinks/constants/routes.dart';
+import 'package:mylinks/constants/themes.dart';
+import 'package:mylinks/views/screens/auth/forgot_password_screen.dart';
+import 'package:mylinks/views/screens/auth/login_screen.dart';
+import 'package:mylinks/views/screens/auth/register_screen.dart';
+import 'package:mylinks/views/screens/auth/create_password_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,30 +17,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'MyLinks',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        fontFamily: 'Montserrat',
-      ),
-      home: const HomeScreen(),
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Center(
-        child: Text(
-          'Home Screen',
-          style: TextStyle(fontSize: 40),
-        ),
-      ),
+      routes: Routes.routes,
+      debugShowCheckedModeBanner: false,
+      theme: AppThemes.lightTheme,
+      darkTheme: ThemeData.dark(useMaterial3: true),
+      themeMode: ThemeMode.light,
+      home: const LoginScreen(),
     );
   }
 }
