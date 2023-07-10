@@ -4,6 +4,7 @@ import 'package:mylinks/constants/routes.dart';
 import 'package:mylinks/constants/themes.dart';
 import 'package:mylinks/views/screens/home_screen.dart';
 import 'package:mylinks/views/screens/onboarding/onboarding_screen.dart';
+import 'package:mylinks/views/screens/onboarding/splash_screen.dart';
 import 'package:mylinks/views/screens/profile_screen.dart';
 
 void main() {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: AppThemes.lightTheme,
       darkTheme: ThemeData.dark(useMaterial3: true),
       themeMode: ThemeMode.light,
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }

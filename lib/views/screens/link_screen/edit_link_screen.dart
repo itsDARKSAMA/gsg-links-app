@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
 
 class EditLinkScreen extends StatefulWidget {
   const EditLinkScreen({Key? key}) : super(key: key);
+  static const route = '/editLink';
 
   @override
   State<EditLinkScreen> createState() => _EditLinkScreenState();
 }
 
 class _EditLinkScreenState extends State<EditLinkScreen> {
-
   late TextEditingController _titleTextController;
   late TextEditingController _linkTextController;
 
@@ -18,7 +19,8 @@ class _EditLinkScreenState extends State<EditLinkScreen> {
   void initState() {
     super.initState();
     _titleTextController = TextEditingController(text: 'Github');
-    _linkTextController = TextEditingController(text: 'https://github.com/notifications');
+    _linkTextController =
+        TextEditingController(text: 'https://github.com/notifications');
   }
 
   @override
@@ -34,13 +36,22 @@ class _EditLinkScreenState extends State<EditLinkScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: const Icon(Icons.arrow_back_ios_new,color:AppColors.blackColor,),
-        title: const Text('Edit Link',style: TextStyle(fontSize: 22),),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios_new,
+            color: AppColors.blackColor,
+          ),
+          onPressed: () => Get.back(),
+        ),
+        title: const Text(
+          'Edit Link',
+          style: TextStyle(fontSize: 22),
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsetsDirectional.only(top: 80,start: 25,end: 25),
+          padding: EdgeInsetsDirectional.only(top: 80, start: 25, end: 25),
           child: Column(
             children: [
               TextFormField(
@@ -54,23 +65,20 @@ class _EditLinkScreenState extends State<EditLinkScreen> {
                     constraints: const BoxConstraints(
                       maxHeight: 55,
                     ),
-
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                            color: AppColors.primaryColor
-                        )
-                    )
-                ),
+                        borderSide: BorderSide(color: AppColors.primaryColor))),
               ),
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               TextFormField(
                 cursorColor: AppColors.primaryColor,
                 keyboardType: TextInputType.text,
-                controller:_linkTextController ,
+                controller: _linkTextController,
                 decoration: InputDecoration(
                     labelStyle: TextStyle(color: AppColors.greyColor),
                     label: const Text('Link'),
@@ -83,13 +91,11 @@ class _EditLinkScreenState extends State<EditLinkScreen> {
                     ),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                            color: AppColors.primaryColor
-                        )
-                    )
-                ),
+                        borderSide: BorderSide(color: AppColors.primaryColor))),
               ),
-              const SizedBox(height: 40,),
+              const SizedBox(
+                height: 40,
+              ),
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
 
 class AddLinkScreen extends StatefulWidget {
   const AddLinkScreen({Key? key}) : super(key: key);
+  static const route = '/addLink';
 
   @override
   State<AddLinkScreen> createState() => _AddLinkScreenState();
 }
 
 class _AddLinkScreenState extends State<AddLinkScreen> {
-
   late TextEditingController _titleTextController;
   late TextEditingController _linkTextController;
 
@@ -34,13 +35,22 @@ class _AddLinkScreenState extends State<AddLinkScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: const Icon(Icons.arrow_back_ios_new,color:AppColors.blackColor,),
-        title: const Text('New Link',style: TextStyle(fontSize: 22),),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios_new,
+            color: AppColors.blackColor,
+          ),
+          onPressed: () => Get.back(),
+        ),
+        title: const Text(
+          'New Link',
+          style: TextStyle(fontSize: 22),
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsetsDirectional.only(top: 80,start: 25,end: 25),
+          padding: EdgeInsetsDirectional.only(top: 80, start: 25, end: 25),
           child: Column(
             children: [
               TextFormField(
@@ -48,25 +58,22 @@ class _AddLinkScreenState extends State<AddLinkScreen> {
                 controller: _titleTextController,
                 cursorColor: AppColors.primaryColor,
                 decoration: InputDecoration(
-                  label: const Text('Title'),
-                  labelStyle: TextStyle(color: AppColors.greyColor),
-                  prefixIcon: const Icon(Icons.title),
-                  constraints: const BoxConstraints(
-                    maxHeight: 55,
-                  ),
-
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(
-                      color: AppColors.primaryColor
-                    )
-                  )
-                ),
+                    label: const Text('Title'),
+                    labelStyle: TextStyle(color: AppColors.greyColor),
+                    prefixIcon: const Icon(Icons.title),
+                    constraints: const BoxConstraints(
+                      maxHeight: 55,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: AppColors.primaryColor))),
               ),
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               TextFormField(
                 cursorColor: AppColors.primaryColor,
                 keyboardType: TextInputType.text,
@@ -74,22 +81,20 @@ class _AddLinkScreenState extends State<AddLinkScreen> {
                 decoration: InputDecoration(
                     labelStyle: TextStyle(color: AppColors.greyColor),
                     label: const Text('Link'),
-                  prefixIcon: const Icon(Icons.link_outlined),
-                  constraints: const BoxConstraints(
-                    maxHeight: 55,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  focusedBorder: OutlineInputBorder(
+                    prefixIcon: const Icon(Icons.link_outlined),
+                    constraints: const BoxConstraints(
+                      maxHeight: 55,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                            color: AppColors.primaryColor
-                        )
-                    )
-                ),
+                        borderSide: BorderSide(color: AppColors.primaryColor))),
               ),
-              const SizedBox(height: 40,),
+              const SizedBox(
+                height: 40,
+              ),
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
+import 'package:mylinks/views/widgets/custom_bottom_nav_bar.dart';
 import 'package:mylinks/views/widgets/custom_qr_card.dart';
 
 class QrShareScreen extends StatelessWidget {
@@ -18,13 +19,16 @@ class QrShareScreen extends StatelessWidget {
         extendBodyBehindAppBar: true,
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          title: const Text('Share QR'),
-          leading: IconButton(
-            onPressed: () => Get.back(),
-            icon: const Icon(Icons.arrow_back_ios_new_rounded),
+          title: const Text(
+            'Share QR',
+            style: TextStyle(color: AppColors.whiteColor),
           ),
+          // leading: IconButton(
+          //   onPressed: () => Get.back(),
+          //   icon: const Icon(Icons.arrow_back_ios_new_rounded),
+          // ),
         ),
+        bottomNavigationBar: CustomBottomNavBar.white(),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

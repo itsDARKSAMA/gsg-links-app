@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/images.dart';
+import 'package:mylinks/views/screens/auth/login_screen.dart';
 import 'package:mylinks/views/widgets/on_bording_widget.dart';
 import 'package:mylinks/views/widgets/page_view_indicatore.dart';
 
@@ -102,12 +104,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   TextButton(
                     onPressed: () {
                       setState(() {
-                        if (_currentPage > 1) {}
+                        _pageController.nextPage(
+                            duration: Duration(seconds: 1),
+                            curve: Curves.easeInBack);
+                        if (_currentPage > 1) {
+                          Get.offAllNamed(LoginScreen.route);
+                        }
                       });
                     },
                     child: Text(
                       _currentPage > 1 ? "Get Start" : "NEXT",
-                      style: TextStyle(color: Colors.blue),
+                      style: const TextStyle(color: Colors.blue),
                     ),
                   ),
                 ],

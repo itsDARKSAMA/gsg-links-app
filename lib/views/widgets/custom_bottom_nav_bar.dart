@@ -88,6 +88,7 @@ class CustomBottomNavBar extends StatelessWidget {
                         return;
                       }
                       controller.changeIndex(3);
+                      Get.offAllNamed(QrShareScreen.route);
                     },
                     icon: Icons.qr_code_scanner_rounded,
                     title: 'Scan',
