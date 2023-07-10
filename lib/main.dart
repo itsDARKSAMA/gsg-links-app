@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mylinks/constants/routes.dart';
 import 'package:mylinks/constants/themes.dart';
-import 'package:mylinks/views/screens/auth/login_screen.dart';
 import 'package:mylinks/views/screens/home_screen.dart';
+import 'package:mylinks/views/screens/onboarding/onboarding_screen.dart';
+import 'package:mylinks/views/screens/profile_screen.dart';
 
 void main() {
   runApp(const MyApp());

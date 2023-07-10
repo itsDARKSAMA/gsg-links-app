@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
-import 'package:mylinks/views/widgets/custom_appBar.dart';
 import 'package:mylinks/views/widgets/custom_qr_card.dart';
 
 class QrShareScreen extends StatelessWidget {
   const QrShareScreen({Key? key}) : super(key: key);
+  static const String route = '/qr_share';
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +17,13 @@ class QrShareScreen extends StatelessWidget {
       child: Scaffold(
         extendBodyBehindAppBar: true,
         backgroundColor: Colors.transparent,
-        appBar: CustomAppBar(
+        appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: 'Share QR',
-          titleColor: AppColors.whiteColor,
-          icon: Icons.arrow_back_ios_new_rounded,
-          iconColor: Colors.white,
-          onPressed: () {},
+          title: const Text('Share QR'),
+          leading: IconButton(
+            onPressed: () => Get.back(),
+            icon: const Icon(Icons.arrow_back_ios_new_rounded),
+          ),
         ),
         body: Center(
           child: Column(

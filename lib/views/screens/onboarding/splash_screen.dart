@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
+import 'package:mylinks/views/screens/onboarding/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+  static const route = '/splash';
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -12,10 +15,9 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, '/on_boarding');
+      Get.offAllNamed(OnBoardingScreen.route);
     });
   }
 
@@ -24,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         alignment: AlignmentDirectional.center,
-        decoration: BoxDecoration(gradient: AppColors.primaryGradient),
+        decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

@@ -15,12 +15,7 @@ class Fonts {
     fontWeight: FontWeight.w700,
   );
 
-  static const TextStyle b24 = TextStyle(
-    fontSize: 24,
-    fontWeight: FontWeight.w700,
-  );
-  
-    static const TextStyle b17 = TextStyle(
+  static const TextStyle b17 = TextStyle(
     fontSize: 17,
     fontWeight: FontWeight.w700,
   );

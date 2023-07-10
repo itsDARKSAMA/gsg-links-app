@@ -36,13 +36,13 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   qr_flutter: ^4.1.0
-  flutter_svg: ^2.0.7
-
-  flutter_svg: ^2.0.7
 
   smooth_corner: ^1.1.0
   get: ^4.6.5
   vibration: ^1.8.1
+  flutter_svg: ^2.0.7
+  flutter_slidable: ^3.0.0
+  lottie: ^2.4.0
 
 
 dev_dependencies:

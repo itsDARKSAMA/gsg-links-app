@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/images.dart';
-
-import '../../widget/on_bording_widget.dart';
-import '../../widget/page_view_indicatore.dart';
+import 'package:mylinks/views/widgets/on_bording_widget.dart';
+import 'package:mylinks/views/widgets/page_view_indicatore.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
+  static const route = '/onboarding';
 
   @override
   State<OnBoardingScreen> createState() => _OnBoardingScreenState();
@@ -26,7 +26,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _pageController.dispose();
     super.dispose();
   }

@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
+import 'package:mylinks/views/screens/settings_screen.dart';
+import 'package:mylinks/views/screens/share/active_sharing_screen.dart';
+import 'package:mylinks/views/screens/home_screen.dart';
+import 'package:mylinks/views/screens/share/qr_share_screen.dart';
+import 'package:mylinks/views/screens/search_screen.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({
@@ -23,6 +28,7 @@ class CustomBottomNavBar extends StatelessWidget {
         builder: (controller) {
           return BottomAppBar(
             elevation: 0,
+            color: Colors.transparent,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -31,7 +37,13 @@ class CustomBottomNavBar extends StatelessWidget {
                     index: 0,
                     isWhite: isWhite,
                     currentIndex: controller.currentIndex,
-                    onTap: () => controller.changeIndex(0),
+                    onTap: () {
+                      if (controller.currentIndex == 0) {
+                        return;
+                      }
+                      controller.changeIndex(0);
+                      Get.offAllNamed(HomeScreen.route);
+                    },
                     icon: Icons.home,
                     title: 'Home',
                   ),
@@ -41,16 +53,27 @@ class CustomBottomNavBar extends StatelessWidget {
                     index: 1,
                     isWhite: isWhite,
                     currentIndex: controller.currentIndex,
-                    onTap: () => controller.changeIndex(1),
+                    onTap: () {
+                      if (controller.currentIndex == 1) {
+                        return;
+                      }
+                      controller.changeIndex(1);
+                      Get.offAllNamed(SearchScreen.route);
+                    },
                     icon: Icons.search_rounded,
                     title: 'Search',
                   ),
                 ),
                 Expanded(
                   child: FloatingActionButton(
+                    heroTag: 'share',
                     shape: const CircleBorder(),
                     onPressed: () {
+                      if (controller.currentIndex == 2) {
+                        return;
+                      }
                       controller.changeIndex(2);
+                      Get.offAllNamed(ActiveSharingScreen.route);
                     },
                     child: const Icon(Icons.emergency_share_rounded),
                   ),
@@ -60,7 +83,12 @@ class CustomBottomNavBar extends StatelessWidget {
                     index: 3,
                     isWhite: isWhite,
                     currentIndex: controller.currentIndex,
-                    onTap: () => controller.changeIndex(3),
+                    onTap: () {
+                      if (controller.currentIndex == 3) {
+                        return;
+                      }
+                      controller.changeIndex(3);
+                    },
                     icon: Icons.qr_code_scanner_rounded,
                     title: 'Scan',
                   ),
@@ -71,7 +99,11 @@ class CustomBottomNavBar extends StatelessWidget {
                     isWhite: isWhite,
                     currentIndex: controller.currentIndex,
                     onTap: () {
+                      if (controller.currentIndex == 4) {
+                        return;
+                      }
                       controller.changeIndex(4);
+                      Get.offAllNamed(SettingsScreen.route);
                     },
                     icon: Icons.settings_outlined,
                     title: 'Settings',
