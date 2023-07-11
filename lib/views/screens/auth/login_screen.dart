@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
 import 'package:mylinks/controllers/auth/login_controller.dart';
+import 'package:mylinks/views/screens/auth/forgot_password_screen.dart';
 import 'package:mylinks/views/screens/auth/register_screen.dart';
-import 'package:mylinks/views/screens/home_screen.dart';
 import 'package:mylinks/views/widgets/primary_button.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -72,7 +72,8 @@ class LoginScreen extends StatelessWidget {
                       Align(
                         alignment: Alignment.centerLeft,
                         child: TextButton(
-                          onPressed: () => Get.toNamed("/forgot-password"),
+                          onPressed: () =>
+                              Get.toNamed(ForgotPasswordScreen.route),
                           child: const Text(
                             'Forgot Password?',
                             style: Fonts.m16,
