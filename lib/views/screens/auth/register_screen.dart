@@ -69,7 +69,15 @@ class RegisterScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        PrimaryButton(text: "Sign up", onPressed: () {}),
+                        PrimaryButton(text: "Sign up", onPressed: () {
+                          controller.userRegister(
+                              name: controller.fullNameTextController.text,
+                              email: controller.emailTextController.text,
+                              phone: controller.mobileTextController.text,
+                              password: controller.passwordTextController.text,
+                              password_confirmation: controller.confirmPasswordTextController.text
+                          );
+                        }),
                         const SizedBox(
                           height: 12,
                         ),

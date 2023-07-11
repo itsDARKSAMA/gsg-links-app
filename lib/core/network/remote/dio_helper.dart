@@ -46,13 +46,19 @@ class DioHelper
     dio.options.headers =
     {
       ApiConstants.headerKey: ApiConstants.headerValue,
-      ApiConstants.authorizationKey: token,
     };
 
     return dio.post(
       url,
       queryParameters: query,
       data: data,
+      options: Options(
+          headers: {'Authorization': 'Bearer $token'},
+          followRedirects: false,
+          validateStatus: (status) {
+            return status != 500;
+          }
+      )
     );
   }
 

@@ -26,6 +26,7 @@ class LoginScreen extends StatelessWidget {
               init: Get.put(LoginController()),
               builder: (controller) {
                 return Form(
+                  key: controller.formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,6 +37,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       TextField(
                         keyboardType: TextInputType.emailAddress,
+                        controller: controller.emailController,
                         decoration: InputDecoration(
                           label: const Text('Email Address'),
                           prefixIcon: const Icon(Icons.email_outlined),
@@ -51,7 +53,8 @@ class LoginScreen extends StatelessWidget {
                         height: 20,
                       ),
                       TextField(
-                        keyboardType: TextInputType.emailAddress,
+                        keyboardType: TextInputType.text,
+                        controller: controller.passwordController,
                         decoration: InputDecoration(
                           label: const Text('Password'),
                           prefixIcon: const Icon(Icons.lock_outlined),
@@ -82,7 +85,10 @@ class LoginScreen extends StatelessWidget {
                       PrimaryButton(
                           text: "Login",
                           onPressed: () {
-                            Get.offAllNamed(HomeScreen.route);
+                            controller.userLogin(
+                              email: controller.emailController.text,
+                              password: controller.passwordController.text,
+                            );
                           }),
                       const SizedBox(
                         height: 20,

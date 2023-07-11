@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mylinks/constants/routes.dart';
 import 'package:mylinks/constants/themes.dart';
 import 'package:mylinks/core/network/remote/dio_helper.dart';
+import 'package:mylinks/views/screens/auth/login_screen.dart';
 import 'package:mylinks/views/screens/home_screen.dart';
 import 'package:mylinks/views/screens/onboarding/onboarding_screen.dart';
 import 'package:mylinks/views/screens/onboarding/splash_screen.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: AppThemes.lightTheme,
       darkTheme: ThemeData.dark(useMaterial3: true),
       themeMode: ThemeMode.light,
-      home: const SplashScreen(),
+      home: const LoginScreen(),
     );
   }
 }
