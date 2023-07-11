@@ -15,10 +15,12 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text(
-        'MyLinks',
-        style: TextStyle(color: AppColors.primaryColor),
-      )),
+        title: const Text(
+          'MyLinks',
+          style: TextStyle(color: AppColors.primaryColor),
+        ),
+        leading: null,
+      ),
       body: Center(
         child: SizedBox(
           width: MediaQuery.of(context).size.width * 0.9,
@@ -35,7 +37,7 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      TextField(
+                      TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         controller: controller.emailController,
                         decoration: InputDecoration(
@@ -52,12 +54,12 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      TextField(
+                      TextFormField(
                         keyboardType: TextInputType.text,
                         controller: controller.passwordController,
+                        obscureText: true,
                         decoration: InputDecoration(
                           label: const Text('Password'),
-                          prefixIcon: const Icon(Icons.lock_outlined),
                           constraints: const BoxConstraints(
                             maxHeight: 50,
                           ),

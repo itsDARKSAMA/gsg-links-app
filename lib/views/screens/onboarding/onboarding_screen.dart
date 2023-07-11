@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
+import 'package:mylinks/constants/generic_preferences.dart';
 import 'package:mylinks/constants/images.dart';
 import 'package:mylinks/views/screens/auth/login_screen.dart';
 import 'package:mylinks/views/widgets/on_bording_widget.dart';
@@ -21,8 +22,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    if (GenericPreferences.containsKey('onboarding')) {
+      Get.offNamed(LoginScreen.route);
+    }
     _pageController = PageController();
   }
 
@@ -42,11 +45,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             Expanded(
               child: PageView(
                 controller: _pageController,
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 onPageChanged: (int currentPage) {
                   setState(() {
-                    print(currentPage);
-                    print(_pageController);
                     _currentPage = currentPage;
                   });
                 },
@@ -70,17 +71,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(right: 32, left: 32, bottom: 30),
+              padding: const EdgeInsets.only(right: 32, left: 32, bottom: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
                     onPressed: () {
-                      _pageController.animateToPage(
-                        2,
-                        duration: Duration(seconds: 1),
-                        curve: Curves.easeInBack,
-                      );
+                      GenericPreferences.setBool('onboarding', true);
+                      Get.offNamed(LoginScreen.route);
                     },
                     child: const Text(
                       "Skip",
@@ -103,18 +101,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
                   TextButton(
                     onPressed: () {
-                      setState(() {
-                        _pageController.nextPage(
-                            duration: Duration(seconds: 1),
-                            curve: Curves.easeInBack);
-                        if (_currentPage > 1) {
-                          Get.offAllNamed(LoginScreen.route);
-                        }
-                      });
+                      if (_currentPage == 2) {
+                        GenericPreferences.setBool('onboarding', true);
+                        Get.offNamed(LoginScreen.route);
+                        return;
+                      }
+                      _pageController.nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInBack,
+                      );
                     },
                     child: Text(
-                      _currentPage > 1 ? "Get Start" : "NEXT",
-                      style: const TextStyle(color: Colors.blue),
+                      _currentPage == 2 ? "Get Start" : "NEXT",
+                      style: const TextStyle(color: AppColors.primaryColor),
                     ),
                   ),
                 ],
