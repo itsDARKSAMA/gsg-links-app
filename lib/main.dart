@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mylinks/constants/routes.dart';
 import 'package:mylinks/constants/themes.dart';
+import 'package:mylinks/core/network/remote/dio_helper.dart';
 import 'package:mylinks/views/screens/home_screen.dart';
 import 'package:mylinks/views/screens/onboarding/onboarding_screen.dart';
 import 'package:mylinks/views/screens/onboarding/splash_screen.dart';
 import 'package:mylinks/views/screens/profile_screen.dart';
 
-void main() {
+void main() async{
   runApp(const MyApp());
+  DioHelper.init();
 }
 
 class MyApp extends StatelessWidget {
