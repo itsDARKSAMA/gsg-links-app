@@ -45,6 +45,8 @@ dependencies:
   lottie: ^2.4.0
   dio: ^5.2.1+1
   shared_preferences: ^2.2.0
+  geolocator: ^9.0.2
+  permission_handler: ^10.4.2
 
 dev_dependencies:
   flutter_test:

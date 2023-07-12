@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mylinks/constants/colors.dart';
+import 'package:mylinks/controllers/delete_active_shere/delete_active_share.dart';
 import 'package:mylinks/views/widgets/custom_bottom_nav_bar.dart';
 
-class ActiveSharingScreen extends StatelessWidget {
+class ActiveSharingScreen extends StatefulWidget {
   const ActiveSharingScreen({Key? key}) : super(key: key);
   static const String route = '/active_sharing';
 
+  @override
+  State<ActiveSharingScreen> createState() => _ActiveSharingScreenState();
+}
+
+class _ActiveSharingScreenState extends State<ActiveSharingScreen> {
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    DeleteActiveShareController().deleteActiveShare();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
