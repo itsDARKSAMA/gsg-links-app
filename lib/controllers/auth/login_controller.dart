@@ -24,7 +24,6 @@ class LoginController extends GetxController {
       if (formKey.currentState!.validate()) {
         if (response.data != null) {
           loginModel = UserLoginModel.fromJson(response.data);
-
           if (response.statusCode == 200) {
             final isHasToken = loginModel!.token != null;
             if (isHasToken == true) {

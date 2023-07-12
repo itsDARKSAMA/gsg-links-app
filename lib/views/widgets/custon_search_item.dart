@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
+import 'package:mylinks/constants/images.dart';
 
 class CustomSearchItem extends StatelessWidget {
   const CustomSearchItem({
     super.key,
+    required this.name,
   });
+
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -19,20 +23,20 @@ class CustomSearchItem extends StatelessWidget {
       child: Row(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5.0,horizontal: 15),
+            padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 15),
             child: Container(
               width: 48,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: NetworkImage('https://www.meshcc.com/wp-content/uploads/2022/02/Alex-Foord-e1644436249973.jpg'),
+                  image: AssetImage(Images.avatar),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
-          const Text(
-            'mustafa shihab',
+          Text(
+            name,
             style: Fonts.sb14,
           ),
         ],

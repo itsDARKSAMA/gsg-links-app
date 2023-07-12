@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
+import 'package:mylinks/constants/images.dart';
 import 'package:mylinks/controllers/home_controller.dart';
 import 'package:mylinks/controllers/settings_controller.dart';
 import 'package:mylinks/views/widgets/custom_bottom_nav_bar.dart';
@@ -43,7 +44,7 @@ class SettingsScreen extends StatelessWidget {
                           ),
                           child: ClipOval(
                             child: Image.network(
-                              'https://avatars.githubusercontent.com/u/58864791?v=4',
+                              Images.avatar,
                               fit: BoxFit.cover,
                             ),
                           ),
