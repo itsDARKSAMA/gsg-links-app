@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mylinks/constants/generic_preferences.dart';
 import 'package:mylinks/core/network/end_points.dart';
 import 'package:mylinks/core/network/remote/dio_helper.dart';
 import 'package:mylinks/models/register_model.dart';
 import 'package:mylinks/views/screens/auth/login_screen.dart';
-import 'package:mylinks/views/screens/home_screen.dart';
 import 'dart:developer' as dv;
 
 import 'package:mylinks/views/widgets/custom_snackbar.dart';
