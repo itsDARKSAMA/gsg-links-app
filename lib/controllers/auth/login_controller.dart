@@ -34,6 +34,7 @@ class LoginController extends GetxController {
                   "token", "Bearer " + loginModel!.token!);
               GenericPreferences.setInt("id", loginModel!.userData!.id!);
               GenericPreferences.setString("name", loginModel!.userData!.name!);
+              GenericPreferences.setString("fcm", loginModel!.userData!.fcm!);
               GenericPreferences.setString(
                   "email", loginModel!.userData!.email!);
               Get.offAllNamed(HomeScreen.route);
