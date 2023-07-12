@@ -53,22 +53,22 @@ class LinkCard extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               color: AppColors.secondaryColor),
-          child: const Row(
+          child: Row(
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 30,
               ),
-              Icon(
-                Icons.facebook,
+              const Icon(
+                Icons.link,
                 color: AppColors.whiteColor,
                 size: 40,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Text(
-                'Facebook',
-                style: TextStyle(
+                title,
+                style: const TextStyle(
                     color: AppColors.whiteColor,
                     fontSize: 22,
                     fontWeight: FontWeight.bold),
