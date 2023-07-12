@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mylinks/views/screens/link_screen/add_new_link_screen.dart';
 import 'package:mylinks/views/screens/link_screen/edit_link_screen.dart';
+import 'package:mylinks/views/screens/profile_screen.dart';
 import 'package:mylinks/views/screens/settings_screen.dart';
 import 'package:mylinks/views/screens/share/active_sharing_screen.dart';
 import 'package:mylinks/views/screens/auth/create_password_screen.dart';

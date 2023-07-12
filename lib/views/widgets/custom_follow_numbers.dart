@@ -3,10 +3,10 @@ import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
 
 class CustomFollowNumbers extends StatelessWidget {
-  final int number;
+  // final int? number;
   final String followName;
   const CustomFollowNumbers({
-    required this.number,
+    // this.number,
     required this.followName,
     super.key,
   });
@@ -18,18 +18,17 @@ class CustomFollowNumbers extends StatelessWidget {
       height: 75,
       decoration: BoxDecoration(
           color: AppColors.secondaryColor,
-          borderRadius: BorderRadius.circular(10)
-      ),
+          borderRadius: BorderRadius.circular(10)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('$number',style: Fonts.b24.copyWith(
-              color: AppColors.whiteColor
+          Text(
+            "N/A",
+            style: Fonts.b24.copyWith(color: AppColors.whiteColor),
           ),
-          ),
-          Text(followName,style: Fonts.r16.copyWith(
-              color: AppColors.offWhiteColor
-          ),
+          Text(
+            followName,
+            style: Fonts.r16.copyWith(color: AppColors.offWhiteColor),
           ),
         ],
       ),

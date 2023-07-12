@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
+import 'package:mylinks/constants/generic_preferences.dart';
 import 'package:mylinks/views/widgets/custom_bottom_nav_bar.dart';
 import 'package:mylinks/views/widgets/custom_qr_card.dart';
 
@@ -23,10 +24,7 @@ class QrShareScreen extends StatelessWidget {
             'Share QR',
             style: TextStyle(color: AppColors.whiteColor),
           ),
-          // leading: IconButton(
-          //   onPressed: () => Get.back(),
-          //   icon: const Icon(Icons.arrow_back_ios_new_rounded),
-          // ),
+          leading: null,
         ),
         bottomNavigationBar: CustomBottomNavBar.white(),
         body: Center(
@@ -38,7 +36,7 @@ class QrShareScreen extends StatelessWidget {
                 height: 20.0,
               ),
               Text(
-                'Abdelrahman Almajayda',
+                GenericPreferences.getString('name'),
                 style: Fonts.sb16.copyWith(
                   color: AppColors.whiteColor,
                 ),

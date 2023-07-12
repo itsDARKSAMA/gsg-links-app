@@ -13,13 +13,11 @@ class CustomProfileFollowButton extends StatelessWidget {
       width: double.infinity,
       height: 56,
       decoration: BoxDecoration(
-          color: AppColors.greyColor,
-          borderRadius: BorderRadius.circular(10)
-      ),
+          color: AppColors.greyColor, borderRadius: BorderRadius.circular(10)),
       child: Center(
-        child: Text('Follow',style: Fonts.b20.copyWith(
-            color: AppColors.whiteColor
-        ),
+        child: Text(
+          'Follow',
+          style: Fonts.b20.copyWith(color: AppColors.whiteColor),
         ),
       ),
     );
