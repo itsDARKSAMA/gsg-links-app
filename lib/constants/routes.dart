@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mylinks/views/screens/link_screen/add_link_screen.dart';
+import 'package:mylinks/views/screens/link_screen/add_new_link_screen.dart';
 import 'package:mylinks/views/screens/link_screen/edit_link_screen.dart';
 import 'package:mylinks/views/screens/profile_screen.dart';
 import 'package:mylinks/views/screens/settings_screen.dart';
@@ -29,7 +29,6 @@ class Routes {
     ActiveSharingScreen.route: (context) => const ActiveSharingScreen(),
     SettingsScreen.route: (context) => const SettingsScreen(),
     EditLinkScreen.route: (context) => const EditLinkScreen(),
-    AddLinkScreen.route: (context) => const AddLinkScreen(),
-    ProfileScreen.route: (context) => const ProfileScreen(),
+    AddNewLinkScreen.route: (context) => const AddNewLinkScreen(),
   };
 }
