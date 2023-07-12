@@ -18,7 +18,7 @@ class Routes {
   static final routes = <String, Widget Function(BuildContext)>{
     SplashScreen.route: (context) => const SplashScreen(),
     OnBoardingScreen.route: (context) => const OnBoardingScreen(),
-    HomeScreen.route: (context) => const HomeScreen(),
+    HomeScreen.route: (context) =>  HomeScreen(),
     LoginScreen.route: (context) => const LoginScreen(),
     RegisterScreen.route: (context) => const RegisterScreen(),
     ForgotPasswordScreen.route: (context) => const ForgotPasswordScreen(),
@@ -31,3 +31,4 @@ class Routes {
     AddLinkScreen.route: (context) => const AddLinkScreen(),
   };
 }
+
