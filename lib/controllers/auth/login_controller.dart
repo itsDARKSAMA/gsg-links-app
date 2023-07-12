@@ -30,11 +30,12 @@ class LoginController extends GetxController {
             if (isHasToken == true) {
               emailController.clear();
               passwordController.clear();
-              // await prefs.then((value) =>
-              //     value.setString('token', loginModel!.token.toString()));
-              // store token in shared preferences using GenericPreferences.setString("token", loginModel!.token.toString())
+              // store the token, id, name, and email in the shared preferences using GenericPreferences.setString("token", loginModel!.token!);
+              GenericPreferences.setString("token", loginModel!.token!);
+              GenericPreferences.setInt("id", loginModel!.userData!.id!);
+              GenericPreferences.setString("name", loginModel!.userData!.name!);
               GenericPreferences.setString(
-                  "token", loginModel!.token.toString());
+                  "email", loginModel!.userData!.email!);
               Get.offAllNamed(HomeScreen.route);
               CustomSnackbar(
                 title: 'Login Success',

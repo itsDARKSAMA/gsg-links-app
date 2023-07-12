@@ -62,15 +62,15 @@ class RegisterController extends GetxController {
               passwordTextController.clear();
               confirmPasswordTextController.clear();
               mobileTextController.clear();
-              GenericPreferences.setString(
-                  "token", registerModel!.token!.toString());
-              Get.offAllNamed(HomeScreen.route);
+              Get.offAllNamed(LoginScreen.route);
             } else {
+              // that is the snackbar component that we created to show the snackbar easily
               const CustomSnackbar(
-                title: 'Register Failed',
-                message: 'Please try again',
-                type: SnackbarType.error,
-              ).show();
+                title: 'Register Failed', // title of the snackbar
+                message: 'Please try again', // message of the snackbar
+                type: SnackbarType
+                    .error, // type of the snackbar (error, success, warning, info, default)
+              ).show(); // after initialize the snackbar we need to call the show() method
             }
           }
         }

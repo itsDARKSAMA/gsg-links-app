@@ -24,12 +24,12 @@ class _SplashScreenState extends State<SplashScreen> {
       // if token is null, go to onboarding screen
       // else go to home screen
       if (GenericPreferences.containsKey('token')) {
-        Get.offNamed(HomeScreen.route);
+        Get.offAllNamed(HomeScreen.route);
       } else {
         if (GenericPreferences.containsKey('onboarding')) {
-          Get.offNamed(LoginScreen.route);
+          Get.offAllNamed(LoginScreen.route);
         } else {
-          Get.offNamed(OnBoardingScreen.route);
+          Get.offAllNamed(OnBoardingScreen.route);
         }
       }
     });
