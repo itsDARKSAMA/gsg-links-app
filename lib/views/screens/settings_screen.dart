@@ -91,6 +91,10 @@ class SettingsScreen extends StatelessWidget {
                             height: 20,
                           ),
                           PrimaryButton(text: "Save", onPressed: () {}),
+                          const SizedBox(height: 20),
+                          PrimaryButton.red(
+                              text: "logout",
+                              onPressed: () => controller.logout()),
                         ],
                       ),
                     ),

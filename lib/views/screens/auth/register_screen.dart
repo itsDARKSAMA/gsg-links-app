@@ -56,6 +56,7 @@ class RegisterScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 15),
                         TextFormField(
+                          obscureText: true,
                           controller: controller.passwordTextController,
                           decoration: const InputDecoration(
                             labelText: 'Password',
@@ -63,21 +64,25 @@ class RegisterScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 15),
                         TextFormField(
+                          obscureText: true,
                           controller: controller.confirmPasswordTextController,
                           decoration: const InputDecoration(
                             labelText: 'Confirm Password',
                           ),
                         ),
                         const SizedBox(height: 20),
-                        PrimaryButton(text: "Sign up", onPressed: () {
-                          controller.userRegister(
-                              name: controller.fullNameTextController.text,
-                              email: controller.emailTextController.text,
-                              phone: controller.mobileTextController.text,
-                              password: controller.passwordTextController.text,
-                              password_confirmation: controller.confirmPasswordTextController.text
-                          );
-                        }),
+                        PrimaryButton(
+                            text: "Sign up",
+                            onPressed: () {
+                              controller.userRegister(
+                                  name: controller.fullNameTextController.text,
+                                  email: controller.emailTextController.text,
+                                  phone: controller.mobileTextController.text,
+                                  password:
+                                      controller.passwordTextController.text,
+                                  passwordConfirmation: controller
+                                      .confirmPasswordTextController.text);
+                            }),
                         const SizedBox(
                           height: 12,
                         ),

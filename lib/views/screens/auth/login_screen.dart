@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
 import 'package:mylinks/controllers/auth/login_controller.dart';
+import 'package:mylinks/views/screens/auth/forgot_password_screen.dart';
 import 'package:mylinks/views/screens/auth/register_screen.dart';
-import 'package:mylinks/views/screens/home_screen.dart';
 import 'package:mylinks/views/widgets/primary_button.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -15,10 +15,12 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text(
-        'MyLinks',
-        style: TextStyle(color: AppColors.primaryColor),
-      )),
+        title: const Text(
+          'MyLinks',
+          style: TextStyle(color: AppColors.primaryColor),
+        ),
+        leading: null,
+      ),
       body: Center(
         child: SizedBox(
           width: MediaQuery.of(context).size.width * 0.9,
@@ -35,34 +37,27 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      TextField(
+                      TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         controller: controller.emailController,
-                        decoration: InputDecoration(
-                          label: const Text('Email Address'),
-                          prefixIcon: const Icon(Icons.email_outlined),
-                          constraints: const BoxConstraints(
+                        decoration: const InputDecoration(
+                          labelText: "Email Address",
+                          constraints: BoxConstraints(
                             maxHeight: 50,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      TextField(
+                      TextFormField(
                         keyboardType: TextInputType.text,
                         controller: controller.passwordController,
-                        decoration: InputDecoration(
-                          label: const Text('Password'),
-                          prefixIcon: const Icon(Icons.lock_outlined),
-                          constraints: const BoxConstraints(
+                        obscureText: true,
+                        decoration: const InputDecoration(
+                          labelText: "Password",
+                          constraints: BoxConstraints(
                             maxHeight: 50,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                       ),
@@ -72,7 +67,8 @@ class LoginScreen extends StatelessWidget {
                       Align(
                         alignment: Alignment.centerLeft,
                         child: TextButton(
-                          onPressed: () => Get.toNamed("/forgot-password"),
+                          onPressed: () =>
+                              Get.toNamed(ForgotPasswordScreen.route),
                           child: const Text(
                             'Forgot Password?',
                             style: Fonts.m16,
