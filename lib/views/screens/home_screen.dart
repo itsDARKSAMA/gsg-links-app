@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
@@ -165,10 +166,15 @@ class HomeScreen extends StatelessWidget {
                                         title: controller
                                             .linksModel!.links![index].title!,
                                         icon: Icons.link,
-                                        onTap: () {
-                                          Share.share(controller
-                                              .linksModel!.links![index].link!);
+                                        onLongPress: () {
+                                          Clipboard.setData(ClipboardData(text:controller
+                                              .linksModel!.links![index].link! ));
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                            SnackBar(content: Text('copied to clipboard')),
+                                          );
                                         },
+                                        onDoubleTap: () => Share.share(controller
+                                            .linksModel!.links![index].link!),
                                         onEdit: (context) =>
                                             Get.toNamed(EditLinkScreen.route),
                                         onDelete: (context) {},
@@ -181,12 +187,13 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   floatingActionButton: FloatingActionButton(
-                    onPressed: () => Get.toNamed(AddLinkScreen.route),
+                    onPressed: () => Get.toNamed(AddNewLinkScreen.route),
                     child: const Icon(
                       Icons.add,
                       color: AppColors.whiteColor,
-                    ),
-                  ),
-        });
+                    ),),
+
+        );}
+    );
   }
 }

@@ -7,14 +7,18 @@ class LinkCard extends StatelessWidget {
     super.key,
     required this.title,
     required this.icon,
-    required this.onTap,
+    //required this.onTap,
+    required this.onDoubleTap,
+    required this.onLongPress,
     required this.onEdit,
     required this.onDelete,
   });
 
   final String title;
   final IconData icon;
-  final Function() onTap;
+  //final Function() onTap;
+  final Function() onDoubleTap;
+  final Function() onLongPress;
   final Function(BuildContext) onEdit;
   final Function(BuildContext) onDelete;
   @override
@@ -46,34 +50,38 @@ class LinkCard extends StatelessWidget {
           ),
         ],
       ),
-      child: InkWell(
-        onTap: onTap,
-        child: Container(
-          height: 60,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: AppColors.secondaryColor),
-          child: Row(
-            children: [
-              const SizedBox(
-                width: 30,
-              ),
-              const Icon(
-                Icons.link,
-                color: AppColors.whiteColor,
-                size: 40,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Text(
-                title,
-                style: const TextStyle(
-                    color: AppColors.whiteColor,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
+      child: GestureDetector(
+        onDoubleTap: onDoubleTap,
+        onLongPress: onLongPress,
+        child: InkWell(
+          //onTap: onTap,
+          child: Container(
+            height: 60,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: AppColors.secondaryColor),
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 30,
+                ),
+                const Icon(
+                  Icons.link,
+                  color: AppColors.whiteColor,
+                  size: 40,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  title,
+                  style: const TextStyle(
+                      color: AppColors.whiteColor,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
           ),
         ),
       ),
