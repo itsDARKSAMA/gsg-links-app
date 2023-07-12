@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mylinks/constants/generic_preferences.dart';
 import 'package:mylinks/core/network/end_points.dart';
 import 'package:mylinks/core/network/remote/dio_helper.dart';
-
-import '../../../constants/generic_preferences.dart';
-import '../../../models/link_model.dart';
-import '../../../views/widgets/custom_snackbar.dart';
+import 'package:mylinks/models/link_model.dart';
+import 'package:mylinks/views/widgets/custom_snackbar.dart';
 
 class AddNewLinkController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -25,7 +24,8 @@ class AddNewLinkController extends GetxController {
         .then((response) async {
       if (response.data != null) {
         linkModel = LinkModel.fromJson(response.data);
-        if (response.statusCode == 200 && link.startsWith('http://') || title.startsWith('https://')) {
+        if (response.statusCode == 200 && link.startsWith('http://') ||
+            link.startsWith('https://')) {
           titleTextController.clear();
           linkTextController.clear();
           Get.back();

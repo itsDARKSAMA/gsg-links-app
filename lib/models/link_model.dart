@@ -6,13 +6,13 @@ class LinkModel {
   LinkModel({this.link});
 
   LinkModel.fromJson(Map<String, dynamic> json) {
-    link = json['link'] != null ? new LinkData.fromJson(json['link']) : null;
+    link = json['link'] != null ? LinkData.fromJson(json['link']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.link != null) {
-      data['link'] = this.link!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (link != null) {
+      data['link'] = link!.toJson();
     }
     return data;
   }
@@ -49,21 +49,21 @@ class LinkData {
     userId = json['user_id'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    user = json['user'] != null ? new UserData.fromJson(json['user']) : null;
+    user = json['user'] != null ? UserData.fromJson(json['user']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['link'] = this.link;
-    data['username'] = this.username;
-    data['isActive'] = this.isActive;
-    data['user_id'] = this.userId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
+    data['link'] = link;
+    data['username'] = username;
+    data['isActive'] = isActive;
+    data['user_id'] = userId;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (user != null) {
+      data['user'] = user!.toJson();
     }
     return data;
   }

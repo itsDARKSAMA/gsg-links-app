@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
 import 'package:mylinks/controllers/home_controller.dart';
-import 'package:mylinks/views/screens/link_screen/add_link_screen.dart';
+import 'package:mylinks/views/screens/link_screen/add_new_link_screen.dart';
 import 'package:mylinks/views/screens/link_screen/edit_link_screen.dart';
 import 'package:mylinks/views/widgets/custom_bottom_nav_bar.dart';
 import 'package:mylinks/views/widgets/link_card.dart';
@@ -160,7 +160,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             floatingActionButton: FloatingActionButton(
-              onPressed: () => Get.toNamed(AddLinkScreen.route),
+              onPressed: () => Get.toNamed(AddNewLinkScreen.route),
               child: const Icon(
                 Icons.add,
                 color: AppColors.whiteColor,

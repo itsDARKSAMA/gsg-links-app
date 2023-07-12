@@ -4,8 +4,8 @@ import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
 import 'package:mylinks/controllers/auth/add_link/link_controller.dart';
 
-class AddLinkScreen extends StatelessWidget {
-  const AddLinkScreen({Key? key}) : super(key: key);
+class AddNewLinkScreen extends StatelessWidget {
+  const AddNewLinkScreen({Key? key}) : super(key: key);
   static const route = '/addLink';
 
   @override
@@ -84,7 +84,9 @@ class AddLinkScreen extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        controller.addNewLink(title: controller.titleTextController.text, link: controller.linkTextController.text);
+                        controller.addNewLink(
+                            title: controller.titleTextController.text,
+                            link: controller.linkTextController.text);
                       },
                       style: ElevatedButton.styleFrom(
                         minimumSize: const Size(double.infinity, 55),
