@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
+import 'package:mylinks/controllers/active_sharing_controller.dart';
 import 'package:mylinks/views/screens/settings_screen.dart';
 import 'package:mylinks/views/screens/share/active_sharing_screen.dart';
 import 'package:mylinks/views/screens/home_screen.dart';
@@ -71,6 +72,7 @@ class CustomBottomNavBar extends StatelessWidget {
                         return;
                       }
                       controller.changeIndex(2);
+
                       Get.offAllNamed(ActiveSharingScreen.route,
                           arguments: {'type': "Sender"});
                     },
@@ -82,8 +84,11 @@ class CustomBottomNavBar extends StatelessWidget {
                           return;
                         }
                         controller.changeIndex(2);
-                        Get.offAllNamed(ActiveSharingScreen.route,
-                            arguments: {'type': "Receiver"});
+
+                        Get.offAllNamed(
+                          ActiveSharingScreen.route,
+                          arguments: {'type': "Receiver"},
+                        );
                       },
                       child: const Icon(Icons.emergency_share_rounded),
                     ),
