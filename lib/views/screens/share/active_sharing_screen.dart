@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mylinks/constants/colors.dart';
+import 'package:mylinks/controllers/delete_active_shere/delete_active_share.dart';
 import 'package:mylinks/controllers/user_active_share_controller/user_active_share_nearest_controller.dart';
 import 'package:mylinks/views/widgets/custom_bottom_nav_bar.dart';
 
@@ -13,8 +14,17 @@ class ActiveSharingScreen extends StatefulWidget {
 }
 
 class _ActiveSharingScreenState extends State<ActiveSharingScreen> {
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    DeleteActiveShareController().deleteActiveShare();
+    super.dispose();
+  }
+
   final controller = UserActiveSharController();
   bool dataLoaded = false;
+
 
   @override
   Widget build(BuildContext context) {
