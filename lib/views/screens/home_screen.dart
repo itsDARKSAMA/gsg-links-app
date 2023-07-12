@@ -3,15 +3,21 @@ import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
 import 'package:mylinks/controllers/home_controller.dart';
-import 'package:mylinks/views/screens/link_screen/add_link_screen.dart';
+
+import 'package:mylinks/controllers/location_controller.dart';
+
+
+import 'package:mylinks/views/screens/link_screen/add_new_link_screen.dart';
 import 'package:mylinks/views/screens/link_screen/edit_link_screen.dart';
 import 'package:mylinks/views/widgets/custom_bottom_nav_bar.dart';
 import 'package:mylinks/views/widgets/link_card.dart';
 import 'package:share_plus/share_plus.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+   HomeScreen({Key? key}) : super(key: key);
   static const String route = '/home';
+
+  LocationController _controller = Get.put(LocationController());
 
   @override
   Widget build(BuildContext context) {
@@ -181,7 +187,6 @@ class HomeScreen extends StatelessWidget {
                       color: AppColors.whiteColor,
                     ),
                   ),
-                );
         });
   }
 }

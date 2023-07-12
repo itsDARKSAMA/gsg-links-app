@@ -24,16 +24,17 @@ class LoginController extends GetxController {
       if (formKey.currentState!.validate()) {
         if (response.data != null) {
           loginModel = UserLoginModel.fromJson(response.data);
-
           if (response.statusCode == 200) {
             final isHasToken = loginModel!.token != null;
             if (isHasToken == true) {
               emailController.clear();
               passwordController.clear();
               // store the token, id, name, and email in the shared preferences using GenericPreferences.setString("token", loginModel!.token!);
-              GenericPreferences.setString("token", loginModel!.token!);
+              GenericPreferences.setString(
+                  "token", "Bearer " + loginModel!.token!);
               GenericPreferences.setInt("id", loginModel!.userData!.id!);
               GenericPreferences.setString("name", loginModel!.userData!.name!);
+              GenericPreferences.setString("fcm", loginModel!.userData!.fcm!);
               GenericPreferences.setString(
                   "email", loginModel!.userData!.email!);
               Get.offAllNamed(HomeScreen.route);

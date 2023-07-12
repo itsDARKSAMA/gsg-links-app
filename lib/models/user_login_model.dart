@@ -1,18 +1,14 @@
-
-class UserLoginModel
-{
+class UserLoginModel {
   String? token;
   UserData? userData;
 
-  UserLoginModel.fromJson(Map<String, dynamic> json)
-  {
+  UserLoginModel.fromJson(Map<String, dynamic> json) {
     token = json['token'];
     userData = json['user'] != null ? UserData.fromJson(json['user']) : null;
   }
 }
 
-class UserData
-{
+class UserData {
   int? id;
   String? name;
   String? email;
@@ -26,7 +22,7 @@ class UserData
   double? lat;
   String? fcm;
 
-UserData({
+  UserData({
     this.id,
     this.name,
     this.email,
@@ -38,11 +34,10 @@ UserData({
     this.ip,
     this.long,
     this.lat,
-    this.fcm ,
-});
+    this.fcm,
+  });
 
-  UserData.fromJson(Map<String, dynamic> json)
-  {
+  UserData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     email = json['email'];
@@ -55,5 +50,22 @@ UserData({
     long = json['long'];
     lat = json['lat'];
     fcm = json['fcm'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['email'] = this.email;
+    data['email_verified_at'] = this.email_verified_at;
+    data['created_at'] = this.created_at;
+    data['updated_at'] = this.updated_at;
+    data['isActive'] = this.isActive;
+    data['country'] = this.country;
+    data['ip'] = this.ip;
+    data['long'] = this.long;
+    data['lat'] = this.lat;
+    data['fcm'] = this.fcm;
+    return data;
   }
 }

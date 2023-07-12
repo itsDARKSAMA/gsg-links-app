@@ -3,4 +3,5 @@ class Images {
   static const String ob1 = 'assets/images/ob_1.svg';
   static const String ob2 = 'assets/images/ob_2.svg';
   static const String ob3 = 'assets/images/ob_3.svg';
+  static const String avatar = 'assets/images/avatar.png';
 }

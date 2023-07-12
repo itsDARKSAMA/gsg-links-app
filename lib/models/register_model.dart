@@ -6,9 +6,9 @@ class RegisterModel {
   RegisterModel({this.message, this.user, this.token});
 
   RegisterModel.fromJson(Map<String, dynamic> json) {
-    message= json['message'];
-    user= UserRegisterData.fromJson(json['user']);
-    token= json['token'];
+    message = json['message'];
+    user = UserRegisterData.fromJson(json['user']);
+    token = json['token'];
   }
 }
 
@@ -19,13 +19,14 @@ class UserRegisterData {
   String? createdAt;
   int? id;
 
-  UserRegisterData({this.name, this.email, this.updatedAt, this.createdAt, this.id});
+  UserRegisterData(
+      {this.name, this.email, this.updatedAt, this.createdAt, this.id});
 
   UserRegisterData.fromJson(Map<String, dynamic> json) {
-      name=json['name'];
-      email=json['email'];
-      updatedAt=json['updated_at'];
-      createdAt=json['created_at'];
-      id=json['id'];
+    name = json['name'];
+    email = json['email'];
+    updatedAt = json['updated_at'];
+    createdAt = json['created_at'];
+    id = json['id'];
   }
 }
