@@ -10,7 +10,9 @@ class AppColors {
   static const Color greyColor = Color(0xFF484C52);
   static const Color lightGreyColor = Color(0xFFBDBDBD);
   static const Color redColor = Color(0xFFEB5757);
+  static const Color orangeColor = Color(0xFFFFB319);
   static const Color yellowColor = Color(0xFFFFD465);
+  static const Color greenColor = Color(0xFF00A881);
 
   // Gradients
   static const Gradient primaryGradient = LinearGradient(
