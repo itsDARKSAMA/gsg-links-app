@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mylinks/constants/colors.dart';
+import 'package:mylinks/constants/fonts.dart';
 import 'package:mylinks/views/widgets/custom_bottom_nav_bar.dart';
 
 class ActiveSharingScreen extends StatelessWidget {
@@ -10,8 +12,13 @@ class ActiveSharingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        gradient: AppColors.primaryGradient,
+      decoration: BoxDecoration(
+        // gradient: Get.arguments['type'] == 'Receiver'
+        //     ? AppColors.primaryGradient
+        //     : null,
+        color: Get.arguments['type'] == 'Sender'
+            ? AppColors.greenColor
+            : AppColors.redColor,
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -28,6 +35,21 @@ class ActiveSharingScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Text(
+                  "${Get.arguments['type']} mode",
+                  style: Fonts.b24.copyWith(
+                    color: AppColors.whiteColor,
+                  ),
+                ),
+                Text(
+                  'Please wait while finding your friends',
+                  style: Fonts.r10.copyWith(
+                    color: AppColors.offWhiteColor,
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
                 Lottie.network(
                   "https://assets7.lottiefiles.com/packages/lf20_C7naQNJWjn.json",
                   height: 170,

@@ -65,17 +65,28 @@ class CustomBottomNavBar extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: FloatingActionButton(
-                    heroTag: 'share',
-                    shape: const CircleBorder(),
-                    onPressed: () {
+                  child: GestureDetector(
+                    onLongPress: () {
                       if (controller.currentIndex == 2) {
                         return;
                       }
                       controller.changeIndex(2);
-                      Get.offAllNamed(ActiveSharingScreen.route);
+                      Get.offAllNamed(ActiveSharingScreen.route,
+                          arguments: {'type': "Sender"});
                     },
-                    child: const Icon(Icons.emergency_share_rounded),
+                    child: FloatingActionButton(
+                      heroTag: 'share',
+                      shape: const CircleBorder(),
+                      onPressed: () {
+                        if (controller.currentIndex == 2) {
+                          return;
+                        }
+                        controller.changeIndex(2);
+                        Get.offAllNamed(ActiveSharingScreen.route,
+                            arguments: {'type': "Receiver"});
+                      },
+                      child: const Icon(Icons.emergency_share_rounded),
+                    ),
                   ),
                 ),
                 Expanded(
@@ -88,7 +99,9 @@ class CustomBottomNavBar extends StatelessWidget {
                         return;
                       }
                       controller.changeIndex(3);
-                      Get.offAllNamed(QrShareScreen.route);
+                      Get.offAllNamed(
+                        QrShareScreen.route,
+                      );
                     },
                     icon: Icons.qr_code_scanner_rounded,
                     title: 'Scan',
