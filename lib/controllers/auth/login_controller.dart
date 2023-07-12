@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mylinks/constants/generic_preferences.dart';
 import 'package:mylinks/core/network/end_points.dart';
 import 'package:mylinks/core/network/remote/dio_helper.dart';
 import 'package:mylinks/models/user_login_model.dart';
@@ -29,8 +30,11 @@ class LoginController extends GetxController {
             if (isHasToken == true) {
               emailController.clear();
               passwordController.clear();
-              await prefs.then((value) =>
-                  value.setString('token', loginModel!.token.toString()));
+              // await prefs.then((value) =>
+              //     value.setString('token', loginModel!.token.toString()));
+              // store token in shared preferences using GenericPreferences.setString("token", loginModel!.token.toString())
+              GenericPreferences.setString(
+                  "token", loginModel!.token.toString());
               Get.offAllNamed(HomeScreen.route);
               CustomSnackbar(
                 title: 'Login Success',
@@ -54,12 +58,5 @@ class LoginController extends GetxController {
         type: SnackbarType.error,
       ).show();
     });
-  }
-
-  @override
-  void onClose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.onClose();
   }
 }

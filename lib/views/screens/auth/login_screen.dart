@@ -40,14 +40,10 @@ class LoginScreen extends StatelessWidget {
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         controller: controller.emailController,
-                        decoration: InputDecoration(
-                          label: const Text('Email Address'),
-                          prefixIcon: const Icon(Icons.email_outlined),
-                          constraints: const BoxConstraints(
+                        decoration: const InputDecoration(
+                          labelText: "Email Address",
+                          constraints: BoxConstraints(
                             maxHeight: 50,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                       ),
@@ -58,13 +54,10 @@ class LoginScreen extends StatelessWidget {
                         keyboardType: TextInputType.text,
                         controller: controller.passwordController,
                         obscureText: true,
-                        decoration: InputDecoration(
-                          label: const Text('Password'),
-                          constraints: const BoxConstraints(
+                        decoration: const InputDecoration(
+                          labelText: "Password",
+                          constraints: BoxConstraints(
                             maxHeight: 50,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                       ),
