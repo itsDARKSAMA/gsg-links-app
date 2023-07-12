@@ -30,7 +30,8 @@ class LoginController extends GetxController {
               emailController.clear();
               passwordController.clear();
               // store the token, id, name, and email in the shared preferences using GenericPreferences.setString("token", loginModel!.token!);
-              GenericPreferences.setString("token", loginModel!.token!);
+              GenericPreferences.setString(
+                  "token", "Bearer " + loginModel!.token!);
               GenericPreferences.setInt("id", loginModel!.userData!.id!);
               GenericPreferences.setString("name", loginModel!.userData!.name!);
               GenericPreferences.setString(
