@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
+import 'package:mylinks/constants/generic_preferences.dart';
+import 'package:mylinks/views/screens/auth/login_screen.dart';
 
 class EditLinkScreen extends StatefulWidget {
   const EditLinkScreen({Key? key}) : super(key: key);
@@ -17,6 +19,12 @@ class _EditLinkScreenState extends State<EditLinkScreen> {
 
   @override
   void initState() {
+    if (!GenericPreferences.containsKey("token")) {
+      Get.offAllNamed(
+        LoginScreen.route,
+      );
+      return;
+    }
     super.initState();
     _titleTextController = TextEditingController(text: 'Github');
     _linkTextController =

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
+import 'package:mylinks/constants/generic_preferences.dart';
 import 'package:mylinks/controllers/auth/add_link/link_controller.dart';
+import 'package:mylinks/views/screens/auth/login_screen.dart';
 
 class AddNewLinkScreen extends StatelessWidget {
   const AddNewLinkScreen({Key? key}) : super(key: key);
@@ -10,6 +12,11 @@ class AddNewLinkScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (!GenericPreferences.containsKey("token")) {
+      Get.offAllNamed(
+        LoginScreen.route,
+      );
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,

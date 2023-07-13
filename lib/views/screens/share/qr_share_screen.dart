@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
 import 'package:mylinks/constants/generic_preferences.dart';
+import 'package:mylinks/views/screens/auth/login_screen.dart';
 import 'package:mylinks/views/widgets/custom_bottom_nav_bar.dart';
 import 'package:mylinks/views/widgets/custom_qr_card.dart';
 
@@ -12,6 +13,11 @@ class QrShareScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (!GenericPreferences.containsKey("token")) {
+      Get.offAllNamed(
+        LoginScreen.route,
+      );
+    }
     return Container(
       decoration: const BoxDecoration(
         gradient: AppColors.primaryGradient,
