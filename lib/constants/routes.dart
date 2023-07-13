@@ -15,6 +15,7 @@ import 'package:mylinks/views/screens/share/qr_share_screen.dart';
 import 'package:mylinks/views/screens/search_screen.dart';
 
 class Routes {
+
   static const Transition _transtion = Transition.fadeIn;
   static List<GetPage<dynamic>> customPages = [
     GetPage(
@@ -84,3 +85,4 @@ class Routes {
     ),
   ];
 }
+
