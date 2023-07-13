@@ -7,15 +7,15 @@ class Links {
     if (json['links'] != null) {
       links = <LinksData>[];
       json['links'].forEach((v) {
-        links!.add(new LinksData.fromJson(v));
+        links!.add(LinksData.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.links != null) {
-      data['links'] = this.links!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (links != null) {
+      data['links'] = links!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -33,13 +33,13 @@ class LinksData {
 
   LinksData(
       {this.id,
-        this.title,
-        this.link,
-        this.username,
-        this.isActive,
-        this.userId,
-        this.createdAt,
-        this.updatedAt});
+      this.title,
+      this.link,
+      this.username,
+      this.isActive,
+      this.userId,
+      this.createdAt,
+      this.updatedAt});
 
   LinksData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -53,15 +53,15 @@ class LinksData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['link'] = this.link;
-    data['username'] = this.username;
-    data['isActive'] = this.isActive;
-    data['user_id'] = this.userId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
+    data['link'] = link;
+    data['username'] = username;
+    data['isActive'] = isActive;
+    data['user_id'] = userId;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

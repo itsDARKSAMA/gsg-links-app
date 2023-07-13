@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mylinks/constants/fonts.dart';
+import 'package:mylinks/constants/generic_preferences.dart';
+import 'package:mylinks/views/screens/auth/login_screen.dart';
 import 'package:mylinks/views/widgets/custom_follow_numbers.dart';
 import 'package:mylinks/views/widgets/custom_profile_follow_button.dart';
 import 'package:mylinks/views/widgets/custom_profile_header.dart';
@@ -12,7 +14,11 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (Get.arguments == null) Get.back();
-
+    if (!GenericPreferences.containsKey("token")) {
+      Get.offAllNamed(
+        LoginScreen.route,
+      );
+    }
     return Scaffold(
       body: Column(
         children: [
