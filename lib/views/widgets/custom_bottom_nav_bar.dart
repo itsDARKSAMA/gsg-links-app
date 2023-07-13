@@ -8,6 +8,7 @@ import 'package:mylinks/views/screens/share/active_sharing_screen.dart';
 import 'package:mylinks/views/screens/home_screen.dart';
 import 'package:mylinks/views/screens/share/qr_share_screen.dart';
 import 'package:mylinks/views/screens/search_screen.dart';
+import 'package:vibration/vibration.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({
@@ -43,7 +44,9 @@ class CustomBottomNavBar extends StatelessWidget {
                         return;
                       }
                       controller.changeIndex(0);
-                      Get.offAllNamed(HomeScreen.route);
+                      Get.offAllNamed(
+                        HomeScreen.route,
+                      );
                     },
                     icon: Icons.home,
                     title: 'Home',
@@ -67,11 +70,14 @@ class CustomBottomNavBar extends StatelessWidget {
                 ),
                 Expanded(
                   child: GestureDetector(
-                    onLongPress: () {
+                    onLongPress: () async {
                       if (controller.currentIndex == 2) {
                         return;
                       }
                       controller.changeIndex(2);
+                      if (await Vibration.hasVibrator() != null) {
+                        Vibration.vibrate(amplitude: 128, duration: 500);
+                      }
 
                       Get.offAllNamed(ActiveSharingScreen.route,
                           arguments: {'type': "Sender"});
@@ -79,12 +85,15 @@ class CustomBottomNavBar extends StatelessWidget {
                     child: FloatingActionButton(
                       heroTag: 'share',
                       shape: const CircleBorder(),
-                      onPressed: () {
+                      onPressed: () async {
                         if (controller.currentIndex == 2) {
                           return;
                         }
-                        controller.changeIndex(2);
 
+                        controller.changeIndex(2);
+                        if (await Vibration.hasVibrator() != null) {
+                          Vibration.vibrate(amplitude: 128, duration: 100);
+                        }
                         Get.offAllNamed(
                           ActiveSharingScreen.route,
                           arguments: {'type': "Receiver"},

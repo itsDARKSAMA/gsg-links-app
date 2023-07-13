@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Betweener',
-      routes: Routes.routes,
+      // routes: Routes.routes,
+      getPages: Routes.customPages,
       debugShowCheckedModeBanner: false,
       theme: AppThemes.lightTheme,
       darkTheme: ThemeData.dark(useMaterial3: true),
