@@ -43,7 +43,7 @@ class SettingsScreen extends StatelessWidget {
                             ),
                           ),
                           child: ClipOval(
-                            child: Image.network(
+                            child: Image.asset(
                               Images.avatar,
                               fit: BoxFit.cover,
                             ),

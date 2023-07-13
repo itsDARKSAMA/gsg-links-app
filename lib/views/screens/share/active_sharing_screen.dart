@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mylinks/constants/colors.dart';
+
+import 'package:mylinks/constants/fonts.dart';
+import 'package:mylinks/controllers/active_sharing_controller.dart';
 import 'package:mylinks/controllers/delete_active_shere/delete_active_share.dart';
 import 'package:mylinks/controllers/user_active_share_controller/user_active_share_nearest_controller.dart';
 import 'package:mylinks/views/widgets/custom_bottom_nav_bar.dart';
@@ -29,8 +33,13 @@ class _ActiveSharingScreenState extends State<ActiveSharingScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        gradient: AppColors.primaryGradient,
+      decoration: BoxDecoration(
+        gradient: Get.arguments['type'] == 'Receiver'
+            ? AppColors.primaryGradient
+            : null,
+        color: Get.arguments['type'] == 'Sender'
+            ? AppColors.greenColor
+            : AppColors.redColor,
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -44,6 +53,73 @@ class _ActiveSharingScreenState extends State<ActiveSharingScreen> {
         body: Center(
           child: SizedBox(
             width: MediaQuery.of(context).size.width * 0.9,
+// 22-create-active-sharing-set-active-sharing-api-request
+            child: GetBuilder<ActiveSharingController>(
+                init: Get.put(ActiveSharingController()),
+                dispose: (state) {
+                  Get.find<ActiveSharingController>().stopSharing();
+                },
+                builder: (controller) {
+                  controller.startSharing(Get.arguments['type']);
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "${Get.arguments['type']} mode",
+                        style: Fonts.b24.copyWith(
+                          color: AppColors.whiteColor,
+                        ),
+                      ),
+                      Text(
+                        'Please wait while finding your friends',
+                        style: Fonts.r10.copyWith(
+                          color: AppColors.offWhiteColor,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Lottie.network(
+                        "https://assets7.lottiefiles.com/packages/lf20_C7naQNJWjn.json",
+                        height: 170,
+                        width: 170,
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Container(
+                        height: 50,
+                        padding: const EdgeInsets.all(15),
+                        width: 270,
+                        decoration: BoxDecoration(
+                          color: AppColors.offWhiteColor,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.person_2,
+                              color: AppColors.greyColor,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            SizedBox(
+                              width: 200,
+                              child: Text(
+                                "Mustafa Sehab",
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  );
+                }),
+//=======
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -131,6 +207,7 @@ class _ActiveSharingScreenState extends State<ActiveSharingScreen> {
                   ),
               ],
             ),
+//>>>>>>> main
           ),
         ),
       ),
