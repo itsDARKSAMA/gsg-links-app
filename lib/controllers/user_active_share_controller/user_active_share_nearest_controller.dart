@@ -18,9 +18,10 @@ class UserActiveSharController extends GetxController {
   Future<List> getUserActiveSharSender() async {
     String url = EndPoints.NEAREST_SENDER.replaceFirst("{id}", id.toString());
     try {
+      String token = GenericPreferences.getString("token");
       var response = await DioHelper.getData(
           url: url,
-          token: GenericPreferences.getString("token"),
+          token:'Bearer $token',
           query: {
             "User-Agent": "PostmanRuntime/7.32.3",
             "Accept": "application/json"

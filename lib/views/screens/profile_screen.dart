@@ -13,7 +13,9 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Get.arguments == null) Get.back();
+    if (Get.arguments == null) {
+      Get.back();
+    }
     if (!GenericPreferences.containsKey("token")) {
       Get.offAllNamed(
         LoginScreen.route,
@@ -27,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
             height: 60,
           ),
           Text(
-            Get.arguments,
+            Get.arguments[0]['name'],
             style: Fonts.sb16,
           ),
           const SizedBox(

@@ -64,13 +64,11 @@ class SearchScreen extends StatelessWidget {
                           child: ListView.separated(
                               itemBuilder: (context, index) => InkWell(
                                     onTap: () {
-                                      Get.toNamed(
-                                        ProfileScreen.route,
-                                        arguments:
-                                            // controller.searchList[index].id,
-                                            controller.searchList[index].name
-                                                .toString(),
-                                      );
+                                      Get.toNamed(ProfileScreen.route,
+                                          arguments: {
+                                            'name':
+                                                "${controller.searchList[index].name}",
+                                          });
                                     },
                                     child: CustomSearchItem(
                                         name:

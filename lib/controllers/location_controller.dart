@@ -9,12 +9,11 @@ import 'package:permission_handler/permission_handler.dart';
 
 import 'package:get/get.dart';
 
-class LocationController extends GetxController{
-
+class LocationController extends GetxController {
   UpdateUserLocation? userLocation;
 
   LocationController get to => Get.find<LocationController>();
-   DateTime? lastRequestTime;
+  DateTime? lastRequestTime;
 
   @override
   void onInit() {
@@ -32,7 +31,6 @@ class LocationController extends GetxController{
         message: 'Please grant location permission to continue',
         type: SnackbarType.error,
       ).show();
-
     }
   }
 
@@ -40,7 +38,7 @@ class LocationController extends GetxController{
     if (isTimeElapsed()) {
       await sendRequest();
       updateRequestTime();
-      Future.delayed(const Duration(minutes: 3), () {
+      Future.delayed(const Duration(minutes: 1), () {
         updateUserLocation();
       });
     }
@@ -51,7 +49,7 @@ class LocationController extends GetxController{
       return true;
     }
     final difference = DateTime.now().difference(lastRequestTime!);
-    return difference.inMinutes >= 3;
+    return difference.inMinutes >= 1;
   }
 
   Future<void> sendRequest() async {
@@ -62,23 +60,23 @@ class LocationController extends GetxController{
     double longitude = position.longitude;
     int id = GenericPreferences.getInt('id');
     String token = GenericPreferences.getString('token');
-    DioHelper.putData(url:'${EndPoints.UPDATE_USER_LOCATION}/$id',
-        data: {
-          'lat': latitude.toString(),
-          'long': longitude.toString(),
-        },
-        token: 'Bearer $token'
-    ).then((response) async {
+    DioHelper.putData(
+            url: '${EndPoints.UPDATE_USER_LOCATION}/$id',
+            data: {
+              'lat': latitude.toString(),
+              'long': longitude.toString(),
+            },
+            token: 'Bearer $token')
+        .then((response) async {
       if (response.data != null) {
         print(response.statusCode);
         if (response.statusCode == 200) {
-          const CustomSnackbar(
-            title: 'Location Updated',
-            message: 'Update User Location Successfully',
-            type: SnackbarType.success,
-          ).show();
-        }else if(response.statusCode == 401){
-        }
+          // const CustomSnackbar(
+          //   title: 'Location Updated',
+          //   message: 'Update User Location Successfully',
+          //   type: SnackbarType.success,
+          // ).show();
+        } else if (response.statusCode == 401) {}
       }
     }).catchError((error) {
       print(error);
@@ -93,5 +91,4 @@ class LocationController extends GetxController{
   void updateRequestTime() {
     lastRequestTime = DateTime.now();
   }
-
 }

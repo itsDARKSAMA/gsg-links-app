@@ -37,7 +37,7 @@ class _ActiveSharingScreenState extends State<ActiveSharingScreen> {
     super.dispose();
   }
 
-  final controller = UserActiveSharController();
+  final controllerData = UserActiveSharController();
   bool dataLoaded = false;
 
   @override
@@ -97,36 +97,79 @@ class _ActiveSharingScreenState extends State<ActiveSharingScreen> {
                       const SizedBox(
                         height: 30,
                       ),
-                      Container(
-                        height: 50,
-                        padding: const EdgeInsets.all(15),
-                        width: 270,
-                        decoration: BoxDecoration(
-                          color: AppColors.offWhiteColor,
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.person_2,
-                              color: AppColors.greyColor,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            SizedBox(
-                              width: 200,
-                              child: Text(
-                                "Mustafa Sehab",
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                      ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      dataLoaded = false;
+                    });
+                    controllerData.getUserActiveSharSender().then((_) {
+                      setState(() {
+                        dataLoaded = true;
+                      });
+                    });
+                  },
+                  child: const Text('Start'),
+                ),
+                   const SizedBox(
+                  height: 30,
+                ),
+                if (dataLoaded)
+                  Expanded(
+                    child: FutureBuilder<List<dynamic>>(
+                      future: controllerData.getUserActiveSharSender(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return CircularProgressIndicator();
+                        } else if (snapshot.hasError) {
+                          return Text('Error: ${snapshot.error}');
+                        } else {
+                          List<dynamic> dataList = snapshot.data ?? [];
+                          return ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: dataList.length,
+                            itemBuilder: (context, index) {
+                              final user = dataList[index]['user'];
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 50,
+                                  padding: const EdgeInsets.all(15),
+                                  width: 270,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.offWhiteColor,
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.person_2,
+                                        color: AppColors.greyColor,
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      SizedBox(
+                                        width: 200,
+                                        child: Text(
+                                          user['name'] ?? 'no data',
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                    ]
                   );
                 }),
 //=======

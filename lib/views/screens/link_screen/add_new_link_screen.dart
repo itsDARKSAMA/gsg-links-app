@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import 'package:mylinks/constants/colors.dart';
 import 'package:mylinks/constants/fonts.dart';
 import 'package:mylinks/constants/generic_preferences.dart';
-import 'package:mylinks/controllers/auth/add_link/link_controller.dart';
+import 'package:mylinks/controllers/auth/link_controller/add_new_link_controller.dart';
+import 'package:mylinks/controllers/auth/link_controller/link_get_controller.dart';
 import 'package:mylinks/views/screens/auth/login_screen.dart';
 
 class AddNewLinkScreen extends StatelessWidget {
@@ -12,6 +13,7 @@ class AddNewLinkScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = LinkGetxController();
     if (!GenericPreferences.containsKey("token")) {
       Get.offAllNamed(
         LoginScreen.route,
@@ -36,83 +38,76 @@ class AddNewLinkScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding:
-              const EdgeInsetsDirectional.only(top: 80, start: 25, end: 25),
-          child: GetBuilder<AddNewLinkController>(
-              init: Get.put(AddNewLinkController()),
-              builder: (controller) {
-                return Column(
-                  children: [
-                    TextFormField(
-                      controller: controller.titleTextController,
-                      keyboardType: TextInputType.text,
-                      cursorColor: AppColors.primaryColor,
-                      decoration: InputDecoration(
-                          label: const Text('Title'),
-                          labelStyle:
-                              const TextStyle(color: AppColors.greyColor),
-                          prefixIcon: const Icon(Icons.title),
-                          constraints: const BoxConstraints(
-                            maxHeight: 55,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                  color: AppColors.primaryColor))),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    TextFormField(
-                      controller: controller.linkTextController,
-                      cursorColor: AppColors.primaryColor,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                          labelStyle:
-                              const TextStyle(color: AppColors.greyColor),
-                          label: const Text('Link'),
-                          prefixIcon: const Icon(Icons.link_outlined),
-                          constraints: const BoxConstraints(
-                            maxHeight: 55,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                  color: AppColors.primaryColor))),
-                    ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        controller.addNewLink(
-                            title: controller.titleTextController.text,
-                            link: controller.linkTextController.text);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(double.infinity, 55),
-                        backgroundColor: AppColors.secondaryColor,
-                        shape: RoundedRectangleBorder(
+            padding:
+                const EdgeInsetsDirectional.only(top: 80, start: 25, end: 25),
+            child: Column(
+              children: [
+                TextFormField(
+                  controller: controller.titleTextController,
+                  keyboardType: TextInputType.text,
+                  cursorColor: AppColors.primaryColor,
+                  decoration: InputDecoration(
+                      label: const Text('Title'),
+                      labelStyle: const TextStyle(color: AppColors.greyColor),
+                      prefixIcon: const Icon(Icons.title),
+                      constraints: const BoxConstraints(
+                        maxHeight: 55,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
-                        ),
+                          borderSide:
+                              const BorderSide(color: AppColors.primaryColor))),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  controller: controller.linkTextController,
+                  cursorColor: AppColors.primaryColor,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                      labelStyle: const TextStyle(color: AppColors.greyColor),
+                      label: const Text('Link'),
+                      prefixIcon: const Icon(Icons.link_outlined),
+                      constraints: const BoxConstraints(
+                        maxHeight: 55,
                       ),
-                      child: Text(
-                        'Save',
-                        style: Fonts.b20.copyWith(
-                          color: AppColors.whiteColor,
-                        ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                    )
-                  ],
-                );
-              }),
-        ),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide:
+                              const BorderSide(color: AppColors.primaryColor))),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    controller.addLink(
+                        title: controller.titleTextController.text,
+                        link: controller.linkTextController.text);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(double.infinity, 55),
+                    backgroundColor: AppColors.secondaryColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: Text(
+                    'Save',
+                    style: Fonts.b20.copyWith(
+                      color: AppColors.whiteColor,
+                    ),
+                  ),
+                )
+              ],
+            )),
       ),
     );
   }

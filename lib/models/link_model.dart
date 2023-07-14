@@ -1,44 +1,31 @@
 import 'package:mylinks/models/user_login_model.dart';
 
 class LinkModel {
-  LinkData? link;
+late List<LinkData> links;
 
-  LinkModel({this.link});
-
+  LinkModel();
   LinkModel.fromJson(Map<String, dynamic> json) {
-    link = json['link'] != null ? LinkData.fromJson(json['link']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (link != null) {
-      data['link'] = link!.toJson();
+    if (json['links'] != null) {
+      links =[];
+      json['links'].forEach((v) {
+        links.add(LinkData.fromJson(v));
+      });
     }
-    return data;
   }
 }
 
 class LinkData {
-  int? id;
-  String? title;
-  String? link;
-  Null? username;
+  late int id;
+  late String title;
+  late String link;
+  String? username;
   int? isActive;
   int? userId;
   String? createdAt;
   String? updatedAt;
   UserData? user;
 
-  LinkData(
-      {this.id,
-      this.title,
-      this.link,
-      this.username,
-      this.isActive,
-      this.userId,
-      this.createdAt,
-      this.updatedAt,
-      this.user});
+  LinkData();
 
   LinkData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -52,19 +39,5 @@ class LinkData {
     user = json['user'] != null ? UserData.fromJson(json['user']) : null;
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['title'] = title;
-    data['link'] = link;
-    data['username'] = username;
-    data['isActive'] = isActive;
-    data['user_id'] = userId;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    if (user != null) {
-      data['user'] = user!.toJson();
-    }
-    return data;
-  }
+ 
 }
